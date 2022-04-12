@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "sport-management-webapp": {
+        "library-management-webapp": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:application": {
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/sport-management-webapp",
+                        "outputPath": "dist/library-management-webapp",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "sport-management-webapp:build:production"
+                            "browserTarget": "library-management-webapp:build:production"
                         },
                         "development": {
-                            "browserTarget": "sport-management-webapp:build:development"
+                            "browserTarget": "library-management-webapp:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "sport-management-webapp:build"
+                        "browserTarget": "library-management-webapp:build"
                     }
                 },
                 "test": {
@@ -106,5 +106,5 @@
             }
         }
     },
-    "defaultProject": "sport-management-webapp"
+    "defaultProject": "library-management-webapp"
 }
