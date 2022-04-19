@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="kv-zoom-body file-zoom-content krajee-default" style="height: 485px">
+        <ng-template *ngIf="type == 'application/pdf'; else imgViewer">
+            <object class="kv-preview-data file-preview-pdf file-zoom-detail" [data]="data" type="application/pdf" style="width: 100%; height: 100%; position: relative; min-height: 480px">
+                <embed [src]="data" style="position:absolute; left: 0; top: 0;" width="100%" height="100%" type="application/pdf">
+                <div class="file-preview-other">
+                    <span class="file-other-icon">
+                        <i class="bi-file-earmark-fill"></i>
+                    </span>
+                </div>
+            </object>
+        </ng-template>
+        <ng-template #imgViewer>
+            <img class="file-preview-image kv-preview-data" [src]="page" style="width: auto; height: auto; max-width: 100%; max-height: 100%; image-orientation: from-image;" />
+        </ng-template>
+    </div>
+</div>

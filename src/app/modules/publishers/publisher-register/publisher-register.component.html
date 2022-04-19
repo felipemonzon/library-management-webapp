@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="offset-xl-1 col-xl-10" [formGroup]="frmAuthor" novalidate>
+    <form class="offset-xl-1 col-xl-10" [formGroup]="frmPublisher" novalidate>
         <ng-template [ngIf]="isUpdate">
             <div class="form-group row">
                 <label class="col-md-4" for="id">*Id:</label>
@@ -8,11 +8,7 @@
         </ng-template>
         <div class="form-group row">
             <label class="col-md-4" for="name">*Nombre:</label>
-            <input type="text" class="form-control col-md-8" #firstName formControlName="firstName" autocomplete="off" [ngClass]="{ 'is-invalid': isValid && form.firstName.errors}" letterOnly maxlength="50">
-        </div>
-        <div class="form-group row">
-            <label class="col-md-4" for="phone">*Apellidos:</label>
-            <input type="text" class="form-control col-md-8" formControlName="lastName" autocomplete="off" [ngClass]="{'is-invalid': isValid && form.lastName.errors}" letterOnly maxlength="100">
+            <input type="text" class="form-control col-md-8" id="name" #name formControlName="name" autocomplete="off" [ngClass]="{ 'is-invalid': isValid && form.name.errors}" letterOnly maxlength="50">
         </div>
         <div class="form-group mt-5 text-center">
             <button type="button" class="btn btn-primary btn-lg" (click)="save()">Guardar</button>

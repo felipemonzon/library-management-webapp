@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.invalid) {
       let user = this.loginForm.value;
       this.loginService.login(user).subscribe((response) => {
-        this.router.navigateByUrl("/home");
+        this.router.navigateByUrl("/menu");
       });
     }
   }

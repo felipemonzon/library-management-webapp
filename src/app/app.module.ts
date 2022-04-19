@@ -16,17 +16,35 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpErrorInterceptor } from './interceptors/HttpErrorInterceptor';
 import { AuthorRegisterComponent } from './modules/authors/author-register/author-register.component';
 import { AuthorRetrieveComponent } from './modules/authors/author-retrieve/author-retrieve.component';
+import { LetterOnlyeDirective } from './directives/letter-only.directive';
+import { LetterNumberOnlyDirective } from './directives/letter-number-only.directive';
+import { NumberOnlyDirective } from './directives/number-only.directive';
+import { PublisherRetrieveComponent } from './modules/publishers/publisher-retrieve/publisher-retrieve.component';
+import { PublisherRegisterComponent } from './modules/publishers/publisher-register/publisher-register.component';
+import { BooksRetrieveComponent } from './modules/books/books-retrieve/books-retrieve.component';
+import { BooksRegisterComponent } from './modules/books/books-register/books-register.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PreviewFileComponent } from './components/preview-file/preview-file.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LetterOnlyeDirective,
+    NumberOnlyDirective,
+    LetterNumberOnlyDirective,
     FooterComponent,
     SidebarComponent,
     NavbarComponent,
     MenuComponent,
     LoginComponent,
     AuthorRegisterComponent,
-    AuthorRetrieveComponent
+    AuthorRetrieveComponent,
+    PublisherRetrieveComponent,
+    PublisherRegisterComponent,
+    BooksRetrieveComponent,
+    BooksRegisterComponent,
+    PreviewFileComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +54,9 @@ import { AuthorRetrieveComponent } from './modules/authors/author-retrieve/autho
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PdfViewerModule,
+    NgSelectModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},

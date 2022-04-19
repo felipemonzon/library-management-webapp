@@ -8,7 +8,7 @@ import { LoginComponent } from './modules/users/login/login.component';
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
   { path: "login", component: LoginComponent },
-  { path: "home", component: MenuComponent, children: [{
+  { path: "menu", component: MenuComponent, children: [{
       path: "", loadChildren: () =>
         import("./components/menu/home.module").then(
           (home) => home.HomeModule

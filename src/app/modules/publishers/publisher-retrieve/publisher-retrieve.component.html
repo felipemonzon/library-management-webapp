@@ -1,0 +1,53 @@
+<div class="container-fluid mb-3">
+    <h2 class="h3 text-center text-capitalize">Administración de Editoriales</h2>
+    <hr>
+    <div class="d-lg-flex">
+        <div class="flex-fill">
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control col-md-8 col-lg-4 font-weight-bold" #search maxlength="50" placeholder="Buscar" autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="btn btn-info" type="button" #btnSearch>
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="justify-content-xl-end">
+            <button type="button" class="btn btn-secondary mb-1 align-items-end flex-column" [routerLink]="['../create']">
+                <span class="fa fa-plus"></span>
+            </button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-stripped table-bordered bg-black">
+            <caption>List of publishers</caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center text-uppercase">Id</th>
+                    <th scope="col" class="text-center text-uppercase">Nombre</th>
+                    <th scope="col" class="text-center text-uppercase" colspan="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let publisher of publishers | slice: (page-1) * pageSize : page * pageSize">
+                <tr *ngIf="publishers.length === 0">
+                    <td colspan="4" class="text-center">No hay Editoriales Para Mostrar</td>
+                </tr>
+                <tr>
+                    <td>{{publisher.id}}</td>
+                    <td class="text-center">{{publisher.name}}</td>
+                    <td class="td-actions text-center">
+                        <a class="btn btn-success btn-simple btn-xs" placement="bottom" ngbTooltip="Edit Publisher">
+                            <i class="fa fa-edit" (click)="update(publisher)"></i>
+                        </a>
+                        <a class="btn btn-danger btn-simple btn-xs" placement="bottom" ngbTooltip="Remove Publisher">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ngb-pagination class="d-flex justify-content-center font-weight-bold" [(page)]="page" [pageSize]="pageSize" [collectionSize]="publishers.length"></ngb-pagination>
+</div>

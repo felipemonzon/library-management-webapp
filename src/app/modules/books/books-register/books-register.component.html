@@ -1,0 +1,94 @@
+<h3 class="text-center">Agregar Libro</h3>
+<form class="row">
+    <div class="col-12 col-lg-6">
+        <div class="file-input">
+            <ng-template [ngIf]="imageSrc && imageSrc !== ''">
+                <div class="file-preview">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="file-drop-disabled clearfix">
+                        <div class="file-preview-thumbnails clearfix">
+                            <div class="file-preview-frame krajee-default kv-preview-thumb" data-fileindex="0">
+                                <div class="kv-file-content">
+                                    <ng-template *ngIf="type == 'application/pdf'; else imgViewer">
+                                        <pdf-viewer [src]="urlSafe" [render-text]="true" style="display: block;"></pdf-viewer>
+                                    </ng-template>
+                                    <ng-template #imgViewer>
+                                        <img class="file-preview-image kv-preview-data" [src]="imageSrc" style="width: auto; height: auto; max-width: 100%; max-height: 100%; image-orientation: from-image;" />
+                                    </ng-template>
+                                </div>
+                                <div class="file-thumbnail-footer">
+                                    <div class="file-footer-caption" title="info">
+                                        <div class="file-caption-info">
+                                            {{info}}
+                                        </div>
+                                        <div class="file-size-info">
+                                            <samp>{{size / 1024 }} KB</samp>
+                                        </div>
+                                    </div>
+                                    <div class="file-actions">
+                                        <div class="file-footer-buttons">
+                                            <button type="button" class="kv-file-zoom btn btn-sm btn-kv btn-default btn-outline-secondary" title="View Details" (click)="openModal()">
+                                                <i class="fas fa-search-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="file-preview-status text-center text-success"></div>
+                        <div class="kv-fileinput-error file-error-message" style="display: none"></div>
+                    </div>
+                </div>
+            </ng-template>
+            <div class="clearfix"></div>
+            <span>
+                    <div class="btn btn-primary btn-file">
+                        <i class="fas fa-folder-open"></i>
+                        <span class="hidden-xs">Browse</span>
+            <input type="file" (change)="showPreview($event)" />
+        </div>
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="name">Nombre:*</label>
+        <input type="text" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+        <label for="isbn">ISBN:*</label>
+        <input type="text" class="form-control" id="isbn">
+    </div>
+    <div class="form-group">
+        <label for="pages">Número de Páginas:*</label>
+        <input type="text" class="form-control" id="pages">
+    </div>
+    </div>
+    <div class="col-12 col-lg-6">
+        <div class="form-group">
+            <label for="author">Autores*:</label>
+            <ng-select id="author" [items]="authors" bindLabel="fullName" placeholder="Seleccionar" [multiple]="true" [searchable]="true">
+                <ng-option *ngFor="let author of authors" [value]="author.id">{{author.firstName}}</ng-option>
+            </ng-select>
+        </div>
+        <div class="form-group">
+            <label for="publisher">Editorial*:</label>
+            <select class="form-control" id="publisher">
+                <option value="0">Seleccionar</option>
+                <option *ngFor="let publisher of publishers" value="{{publisher.id}}">{{publisher.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="genres">Géneros*:</label>
+            <ng-select id="genres" [items]="genres" bindLabel="description" placeholder="Seleccionar" appendTo="body" [multiple]="true">
+                <option value="0">Seleccionar</option>
+                <option *ngFor="let genre of genres" value="{{genre.id}}">{{genre.description}}</option>
+            </ng-select>
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción:</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+    </div>
+</form>
